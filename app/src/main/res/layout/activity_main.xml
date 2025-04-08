@@ -1,19 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Change that I did"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="255dp"
+        android:layout_height="319dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:layout_marginTop="5dp"
+        android:textColor="#a17f18"
+        android:fontFamily="@font/montserrat"
+        android:textStyle="bold"
+        android:text="Pomodominic" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="23sp"
+        android:textColor="#a17f18"
+        android:fontFamily="@font/montserrat"
+        android:text="a chill app" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="216dp"
+        android:layout_height="84dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="300dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/montserrat"
+        android:text="Start"
+        android:textSize="30sp" />
+</LinearLayout>
+
