@@ -23,14 +23,12 @@ public class MainActivity extends AppCompatActivity {
 
         btn_start = findViewById(R.id.btnStart);
 
-
         btn_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, MainActivity3.class);
+                Intent i = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(i);
             }
-
 
         });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

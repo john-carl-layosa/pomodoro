@@ -1,6 +1,7 @@
 package com.example.projectapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,10 +10,12 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -46,10 +49,24 @@ public class MainActivity3 extends AppCompatActivity {
     private int totalWorkSessions = 4; // Total number of work sessions in the Pomodoro cycle before a long break
     private int currentSessionIndex = 0; // Tracks the current session index (used for session switching)
 
+    ImageButton btn_back;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main3);
+
+        btn_back = findViewById(R.id.btnBack);
+
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity3.this, MainActivity2.class);
+                startActivity(i);
+            }
+        });
 
         // Binding UI elements to the views in the layout file
         timerTextView = findViewById(R.id.timerTextView);
