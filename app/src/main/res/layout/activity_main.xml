@@ -18,8 +18,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="255dp"
-        android:layout_height="319dp"
+        android:layout_width="201dp"
+        android:layout_height="225dp"
         android:layout_gravity="center"
         android:layout_marginTop="150dp"
         app:srcCompat="@drawable/logo" />
@@ -49,21 +49,21 @@
 
     <Button
         android:id="@+id/btnStart"
-        android:layout_width="wrap_content"
-        android:layout_height="84dp"
+        android:layout_width="242dp"
+        android:layout_height="57dp"
         android:layout_gravity="center"
 
-        android:layout_marginTop="300dp"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-
+        android:layout_marginTop="20dp"
         android:background="@drawable/btn_oblong"
+        android:fontFamily="@font/montserrat"
 
+        android:paddingLeft="10dp"
+
+        android:paddingRight="10dp"
+        android:text="Get Started!"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:fontFamily="@font/montserrat"
-        android:text="Get Started!"
-        android:textSize="30sp"
-        android:textStyle="bold"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 </LinearLayout>
 
