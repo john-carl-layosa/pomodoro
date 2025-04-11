@@ -4,14 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/tools"
-
     android:paddingTop="80dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingBottom="20dp"
-
     android:orientation="vertical"
-
     android:background="@drawable/background">
 
     <LinearLayout
@@ -23,16 +20,13 @@
         <LinearLayout
             android:layout_width="0px"
             android:layout_weight="0.5"
-
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_marginLeft="20dp"
-
                 android:background="@drawable/btn_circle">
 
                 <ImageButton
@@ -40,7 +34,6 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-
                     android:scaleType="fitCenter"
                     android:background="@android:color/transparent"
                     android:layout_margin="5dp"
@@ -86,16 +79,16 @@
                 android:textStyle="bold" />
 
             <FrameLayout
-                android:layout_width="450dp"
-                android:layout_height="450dp"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
                 android:layout_marginBottom="24dp">
 
                 <ProgressBar
                     android:id="@+id/circularProgressBar"
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
+                    android:layout_width="330dp"
+                    android:layout_height="330dp"
+                    android:layout_gravity="center"
                     android:indeterminate="false"
                     android:max="100"
                     android:progress="100"
@@ -107,12 +100,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/montserrat"
-
                     android:gravity="center"
                     android:text="25:00"
-
                     android:textColor="@color/white"
-                    android:textSize="90sp"
+                    android:textSize="70sp"
                     android:textStyle="bold" />
             </FrameLayout>
 
@@ -129,15 +120,12 @@
 
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_marginRight="15dp"
-
+                    android:layout_marginRight="20dp"
                     android:background="@drawable/btn_circle"
                     android:fontFamily="@font/montserrat"
                     android:text="-5"
                     android:textColor="@color/white"
-
                     android:textSize="20dp"
-
                     android:textStyle="bold" />
 
                 <Button
@@ -145,22 +133,21 @@
 
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-
                     android:background="@drawable/btn_circle"
                     android:fontFamily="@font/montserrat"
                     android:text="+5"
                     android:textColor="@color/white"
-
                     android:textSize="20dp"
-
                     android:textStyle="bold" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/startStopButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
                 android:backgroundTint="@color/mocha"
+                android:textColor="@color/white"
                 android:text="Start" />
 
             <TextView
