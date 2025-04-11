@@ -1,8 +1,8 @@
 package com.example.projectapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
@@ -15,16 +15,21 @@ import java.util.List;
 public class MainActivity2 extends AppCompatActivity {
 
     ImageButton btn_back, btn_clock, btn_playPause;
-    boolean isPlaying = true;  // Music starts via MusicService on launch
+    boolean isPlaying = true;
     int currentSongIndex = 0;
+    boolean isFirstPageChange = true; // Prevent song change on initial load
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Start background music service
+        // Load saved song index from SharedPreferences
+        SharedPreferences prefs = getSharedPreferences("MusicPrefs", MODE_PRIVATE);
+        currentSongIndex = prefs.getInt("currentSongIndex", 0);
+
+        // Start background music service with correct song
         Intent musicIntent = new Intent(MainActivity2.this, MusicService.class);
-        musicIntent.putExtra("songIndex", currentSongIndex);  // Pass current song index on activity launch
+        musicIntent.putExtra("songIndex", currentSongIndex);
         startService(musicIntent);
 
         EdgeToEdge.enable(this);
@@ -36,41 +41,58 @@ public class MainActivity2 extends AppCompatActivity {
 
         ViewPager2 musicCarousel = findViewById(R.id.musicCarousel);
 
+        // Song list
         List<Song> songList = new ArrayList<>();
         songList.add(new Song(R.drawable.nature, "Nature Sounds"));
         songList.add(new Song(R.drawable.lofiimg, "Lofi Beats"));
-        songList.add(new Song(R.drawable.beach, "Beach vibes"));
+        songList.add(new Song(R.drawable.beach, "Beach Vibes"));
 
-        // Back button returns to MainActivity
+        // Adapter
+        MusicAdapter adapter = new MusicAdapter(songList);
+        musicCarousel.setAdapter(adapter);
+
+        // Set carousel to saved song position
+        musicCarousel.setCurrentItem(currentSongIndex, false);
+
+        // Carousel listener
+        musicCarousel.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+
+                // Prevent change on initial load
+                if (isFirstPageChange) {
+                    isFirstPageChange = false;
+                    return;
+                }
+
+                currentSongIndex = position;
+
+                // Save selected song
+                SharedPreferences prefs = getSharedPreferences("MusicPrefs", MODE_PRIVATE);
+                prefs.edit().putInt("currentSongIndex", currentSongIndex).apply();
+
+                // Change song in MusicService
+                Intent intent = new Intent(MainActivity2.this, MusicService.class);
+                intent.putExtra("action", "changeSong");
+                intent.putExtra("songIndex", currentSongIndex);
+                startService(intent);
+            }
+        });
+
+        // Back to MainActivity
         btn_back.setOnClickListener(v -> {
             Intent i = new Intent(MainActivity2.this, MainActivity.class);
             startActivity(i);
         });
 
-        // Clock button goes to MainActivity3
+        // Go to Timer screen (MainActivity3)
         btn_clock.setOnClickListener(v -> {
             Intent i = new Intent(MainActivity2.this, MainActivity3.class);
             startActivity(i);
         });
 
-        MusicAdapter adapter = new MusicAdapter(songList);
-        musicCarousel.setAdapter(adapter);
-
-        musicCarousel.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                currentSongIndex = position;
-
-                // Notify MusicService to change song
-                Intent intent = new Intent(MainActivity2.this, MusicService.class);
-                intent.putExtra("action", "changeSong"); // Action to change the song
-                intent.putExtra("songIndex", currentSongIndex); // Pass the current song index
-                startService(intent);
-            }
-        });
-
-        // Play/Pause music via service
+        // Play / Pause
         btn_playPause.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity2.this, MusicService.class);
             if (isPlaying) {
@@ -89,7 +111,7 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        // Sync play/pause icon with actual music status
+        // Sync play/pause icon
         if (MusicService.isMusicPlaying) {
             btn_playPause.setImageResource(R.drawable.p_pause);
             isPlaying = true;
