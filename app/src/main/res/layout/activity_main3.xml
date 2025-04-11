@@ -37,8 +37,8 @@
 
                 <ImageButton
                     android:id="@+id/btnBack"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
 
                     android:scaleType="fitCenter"
@@ -68,7 +68,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="957dp"
+            android:layout_height="658dp"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
@@ -86,8 +86,8 @@
                 android:textStyle="bold" />
 
             <FrameLayout
-                android:layout_width="450dp"
-                android:layout_height="450dp"
+                android:layout_width="340dp"
+                android:layout_height="340dp"
                 android:layout_marginBottom="24dp">
 
                 <ProgressBar
@@ -112,7 +112,7 @@
                     android:text="25:00"
 
                     android:textColor="@color/white"
-                    android:textSize="90sp"
+                    android:textSize="70sp"
                     android:textStyle="bold" />
             </FrameLayout>
 
@@ -158,18 +158,19 @@
 
             <Button
                 android:id="@+id/startStopButton"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/mocha"
-                android:text="Start" />
+                android:background="@drawable/btn_oblong"
+                android:fontFamily="@font/montserrat"
 
-            <TextView
-                android:id="@+id/progressLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Progress: 0/4"
-                android:textSize="16sp" />
+                android:paddingLeft="10dp"
+
+                android:paddingRight="10dp"
+                android:text="Start"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

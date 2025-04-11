@@ -10,8 +10,8 @@
 
 <ImageView
 android:id="@+id/musicImage"
-android:layout_width="200dp"
-android:layout_height="200dp"
+android:layout_width="300dp"
+android:layout_height="300dp"
 android:scaleType="centerCrop"
 android:src="@drawable/lofiimg" />
 
@@ -19,8 +19,11 @@ android:src="@drawable/lofiimg" />
 android:id="@+id/musicTitle"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
+
 android:text="Lofi Beats"
 android:textSize="20sp"
 android:textColor="@android:color/white"
+android:fontFamily="@font/montserrat"
+
 android:layout_marginTop="10dp" />
     </LinearLayout>
